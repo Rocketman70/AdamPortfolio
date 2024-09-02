@@ -1,12 +1,11 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Adam Abbott
+- **Dot Number**: Abbott.354
+- **Due Date**: 9/13 4:10pm
 
 ## Assignment Overview
 
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,7 +28,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -52,7 +50,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
 
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
@@ -67,7 +64,6 @@ project. Specifically, students should be able to:
 
 ## Assignment Rubric: 10 Points
 
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -98,15 +94,32 @@ do good work.
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I have a significant amount of personal interests and aspirations.
+Career: I hope to end up in some sort of IT field or Applications support based on my
+experience already, it is what I enjoy most.
+
+My hobbies lie in self-hosted services, cars, and firearms. I am a big proponent
+of the Fedora Linux distribution as anyone who knows me will say. I like finding
+ways I can automate my usage and work that goes into using my laptop or server or
+any other mundane tasks.
+
+My biggest task was automating the pre-provisioning process that OSU's Enterprise Networking
+team now completely uses to prepare all new access points (several thousand per year).
+Previously all commands were entered manually based off an Excel sheet and now,
+the script reads Excel sheets and sends commands automatically.
+The repository is public under my username and is named "AruProTool".
+Additionally I have made some smaller automation steps - like automatic keyboard brightness
+on my computer that does not have such a feature. I have created Tasker setups on my Android
+to tell me things like the weather and sunrise time.
+I have also made a small little homepage for myself that features an API for the weather,
+RSS feeds, and SMART tests for the hard drives in my server.
+
+Additionally you can find my server on the open internet for its cockpit interface,
+I had to get certificates so the web page is encrypted, it also uses 2FA for added
+security.
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
@@ -114,7 +127,6 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -124,7 +136,6 @@ you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
 
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -192,9 +203,13 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: dataRep
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to integrate with data already stored in CSV
+    files to assist in data visualization. It would be apart of a program I have
+    that scrapes data from an HTML field and categorizes the data and stores it
+    in a CSV. This should make creating graphs as simple as calling the correct
+    functions.
   - **Kernel Methods**:
     - <!-- TODO: list kernel methods then delete this comment -->
   - **Secondary Methods**:
@@ -214,9 +229,12 @@ will likely refine your design to make your implementation easier to use.
       - <!-- TODO: provide an argument then delete this comment -->
 
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: fileSee
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component will return a text output in the terminal of the file structure
+    of a given directory. I want to implement this into terminal programs such as
+    a music player to make finding files easier instead of knowing the paths.
+    This may require some bash commands integrated into the Java file.
   - **Kernel Methods**:
     - <!-- TODO: list kernel methods then delete this comment -->
   - **Secondary Methods**:
@@ -236,20 +254,27 @@ will likely refine your design to make your implementation easier to use.
       - <!-- TODO: provide an argument then delete this comment -->
 
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: passwordStore
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This would be a component with which you could store passwords securely,
+    with encryption in order to save your passwords or sensitive codes.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - 'void store(String n, String p)' : Stores n and p while encrypting p.
+    - 'String getAllStore()' : Returns all key values for store.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - 'void changeStore(String n)' : Change a p in store
+    - 'String findStore(String n)' : Returns n's like String input.
+    - 'void root(String n)' : Sets 'root' password for access to the store.
+    - 'String getStore(String n)' : Returns p (decrypted)
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes - in order for this to be an effective component, it must be mutable
+      in order to make changes to stored data.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - It would rely on Map.Pair and java.util.Arrays
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
       - <!-- TODO: provide an argument then delete this comment -->
