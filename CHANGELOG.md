@@ -1,5 +1,9 @@
 ```markdown
 ### Changelog
-9/15/24: Added methods to component-brainstorming. Waiting for feedback on which
-to implement
+### 2024.09.15
+### Added
+
+- Designed a configManager component
+- Designed a fileSee component
+- Designed a passwordStore component
 ```
