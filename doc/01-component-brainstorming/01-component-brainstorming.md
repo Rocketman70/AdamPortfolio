@@ -203,17 +203,16 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: dataRep
+- Component Design #1: configManager
   - **Description**:
-    - The purpose of this component is to integrate with data already stored in CSV
-    files to assist in data visualization. It would be apart of a program I have
-    that scrapes data from an HTML field and categorizes the data and stores it
-    in a CSV. This should make creating graphs as simple as calling the correct
-    functions.
+    - Since configuration files are large parts of Linux, this will help users
+    manage and update configuration files for the desired programs.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void loadConfig(String filePath),void saveConfig(String filePath),String getConfigValue(String key)
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void setConfigValue(String key, String value)
+    - boolean hasConfigKey(String key)
+    - void resetToDefaults()
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
@@ -236,22 +235,28 @@ will likely refine your design to make your implementation easier to use.
     a music player to make finding files easier instead of knowing the paths.
     This may require some bash commands integrated into the Java file.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - String getDirectoryStructure(String rootPath)
+    - List<String> listFiles(String directoryPath)
+    - boolean isDirectory(String path)
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void printDirectoryStructure(String rootPath)
+    - List<String> searchFiles(String rootPath, String searchTerm)
+    - Map<String, Long> getFileSizes(String directoryPath)
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, this will be immutable since it is meant for displaying information
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - It would rely on java.io and other internal java classes for interactions
+      with the file structure of the device it is on. I will be designing this
+      for the Linux desktop since it is what I primarily use.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes for filetypes.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, printDirectoryStructure would parse and print using getDirectoryStructure
 
 
 - Component Design #3: passwordStore
@@ -261,11 +266,16 @@ will likely refine your design to make your implementation easier to use.
   - **Kernel Methods**:
     - 'void store(String n, String p)' : Stores n and p while encrypting p.
     - 'String getAllStore()' : Returns all key values for store.
+    - 'String encrypt(String data)' : Encrypts the given data
+    - 'String decrpyt(String encryptedData) : Decrypts the given data
   - **Secondary Methods**:
     - 'void changeStore(String n)' : Change a p in store
     - 'String findStore(String n)' : Returns n's like String input.
     - 'void root(String n)' : Sets 'root' password for access to the store.
     - 'String getStore(String n)' : Returns p (decrypted)
+    - 'boolean verifyRoot(String inputPassword)' : Verifies if the input matches
+    root
+    - void removePass(String n)' : Removes a stored password entry
 
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
@@ -274,13 +284,14 @@ will likely refine your design to make your implementation easier to use.
       in order to make changes to stored data.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - It would rely on Map.Pair and java.util.Arrays
+      - It would rely on Map.Pair to store name-password
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, due to the need for consistent encryption, constants would be useful.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, as seen above we can use the kernel methods to implement a variety
+      of other secondary methods.
 
 ## Post-Assignment
 
@@ -288,8 +299,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
