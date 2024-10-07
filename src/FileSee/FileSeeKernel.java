@@ -106,6 +106,18 @@ public final class FileSeeKernel {
             }
         }
     }
+    /**
+     * When the user selects a file, this method will return the name of the file.
+     * 
+     * @param index
+     *      Index of file to select. 
+     * @return
+     *    Returns the name of the file selected.
+     */
+    public String selectFile(int index) {
+        String fileName = this.currentFiles.entry(index).getName();
+        return fileName;
+    }
 
     /**
      *
