@@ -1,3 +1,4 @@
+package FileSee;
 import java.io.File;
 
 import components.sequence.Sequence1L;
@@ -26,7 +27,7 @@ import components.simplewriter.SimpleWriter1L;
  *
  * @author Adam Abbott
  */
-public final class FileSee {
+public final class FileSeeKernel {
 
     /*
      * Private members----------------------------------------------------------
@@ -56,7 +57,7 @@ public final class FileSee {
     /**
      * No-argument constructor.
      */
-    public FileSee() {
+    public FileSeeKernel() {
         this.createNewRep();
     }
 
@@ -66,16 +67,12 @@ public final class FileSee {
      * @param mandir
      *            {@code String} to initialize from.
      */
-    public FileSee(String mandir) {
+    public FileSeeKernel(String mandir) {
         assert mandir != null : "Violation of directory != null";
         this.dir = mandir;
         this.currentFiles = new Sequence1L<>();
 
     }
-    /*
-     * Standard methods---------------------------------------------------------
-     */
-
     /*
      * Kernel methods-----------------------------------------------------------
      */
@@ -123,7 +120,7 @@ public final class FileSee {
      */
     public static void main(String[] args) {
         System.out.println("Demonstration of the FileSee class.");
-        FileSee fileSee = new FileSee();
+        FileSeeKernel fileSee = new FileSeeKernel();
 
         SimpleWriter out = new SimpleWriter1L();
 
