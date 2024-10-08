@@ -9,8 +9,7 @@ import components.simplewriter.SimpleWriter1L;
  * Some notes about the usage of this program: Intended to pass valid file paths
  * to programs using this implementation as a utility.
  *
- * Designed for use with GNU/Linux but may work due to lack of hard-coded file
- * path structures.
+ * Designed for use with GNU/Linux
  */
 
 /**
@@ -49,6 +48,7 @@ public final class FileSeeKernel {
     private void createNewRep() {
         this.dir = System.getProperty("user.home");
         this.currentFiles = new Sequence1L<>();
+        listFiles();
     }
     /*
      * Constructors-------------------------------------------------------------
@@ -71,6 +71,7 @@ public final class FileSeeKernel {
         assert mandir != null : "Violation of directory != null";
         this.dir = mandir;
         this.currentFiles = new Sequence1L<>();
+        listFiles();
 
     }
     /*
@@ -107,16 +108,45 @@ public final class FileSeeKernel {
         }
     }
     /**
-     * When the user selects a file, this method will return the name of the file.
+     * When the user selects a file, this method will return the absolute path of a file.
      * 
      * @param index
      *      Index of file to select. 
      * @return
      *    Returns the name of the file selected.
      */
-    public String selectFile(int index) {
+    public String getFilename(int index) {
         String fileName = this.currentFiles.entry(index).getName();
+        fileName = this.dir + "/" + fileName;
         return fileName;
+    }
+    /**
+     * Returns the file at the specified index.
+     * @param index
+     * @return 
+     *      Passes the file to the caller.
+     */
+    public File getFile(int index) {
+        return this.currentFiles.entry(index);
+    }
+
+    /**
+     * Navigates to a directory.
+     * @param index
+     *    Index of directory to navigate to.
+     */
+    public void navDir(int index) {
+        // If the index is 0, go to the parent directory.
+        if (index == 0) {
+            this.dir = this.dir.substring(0, this.dir.lastIndexOf('/'));
+            // If the directory is empty, set it to root. 
+            if (this.dir.equals("")) {
+                this.dir = "/";
+            }
+        // If the selection is a directory, navigate to it.
+        } else if(this.currentFiles.entry(index).isDirectory()) {
+            this.dir = this.currentFiles.entry(index).getAbsolutePath();
+        }
     }
 
     /**
@@ -139,11 +169,15 @@ public final class FileSeeKernel {
         fileSee.displayNumberedFileTree();
 
         out.println("List of files/folders in current directory");
-        fileSee.listFiles();
         out.println(fileSee.currentFiles.toString());
 
         out.println("Returns current directory");
         out.println(fileSee.currentDir());
+
+        FileSeeKernel fileSee2 = new FileSeeKernel("/home/adamabbott/Documents/");
+        out.println("List of files/folders in current directory");
+        out.println(fileSee2.currentDir());
+        fileSee2.displayNumberedFileTree();
 
         out.close();
     }
