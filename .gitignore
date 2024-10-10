@@ -7,6 +7,10 @@
 # BlueJ files
 *.ctxt
 
+#Unrelated files/personal files
+*.classpath
+MusicPlayer.java
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
